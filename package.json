@@ -4,6 +4,7 @@
   "description": "Back-end para mx-hacks",
   "main": "index.js",
   "scripts": {
+    "dev": "nodemon index.js -f *.graphql",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
