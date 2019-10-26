@@ -1,0 +1,31 @@
+{
+  "name": "back-tu-primera-opcion",
+  "version": "1.0.0",
+  "description": "Back-end para mx-hacks",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/malibb/back-tu-primera-opcion.git"
+  },
+  "author": "malibb",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/malibb/back-tu-primera-opcion/issues"
+  },
+  "homepage": "https://github.com/malibb/back-tu-primera-opcion#readme",
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "cloudinary": "^1.16.0",
+    "dotenv": "^8.2.0",
+    "graphql-scalars": "^1.0.4",
+    "graphql-yoga": "^1.18.3",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.7.7"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  }
+}
