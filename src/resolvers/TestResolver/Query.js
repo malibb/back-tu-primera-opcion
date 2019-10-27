@@ -4,15 +4,18 @@ const {
     deleteTest
 } = require('../../services/TestService');
 const storage = require('../../utils/storage');
-//const { getOneAuthor } = require('../../services/AuthorService'); 
+//const { getOneTest } = require('../../services/TestService'); 
 
 
 const createNewTest = async (_, {
     data
-}, {user,pubsub}) => {
-    data.author = user._id;
+}, {
+    user,
+    pubsub
+}) => {
+    data.test = user._id;
     // Temporal solution
-    //const author = await getOneAuthor(params.data.author);
+    //const test = await getOneTest(params.data.test);
     if (data.cover) {
         const {
             createReadStream
@@ -41,7 +44,9 @@ const createNewTest = async (_, {
 const updateOneTest = async (_, {
     id,
     data
-}, { user }) => {
+}, {
+    user
+}) => {
     if (data.cover) {
         const {
             createReadStream

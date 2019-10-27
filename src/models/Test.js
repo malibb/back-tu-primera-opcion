@@ -14,7 +14,7 @@ const TestSchema = new Schema({
     watson_tech: {
         type: Object
     },
-    author: {
+    test: {
         type: Schema.Types.ObjectId,
         ref: 'users'
     },
