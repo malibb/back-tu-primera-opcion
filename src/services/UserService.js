@@ -1,6 +1,6 @@
 const {
     Users
-} = require('../models');
+} = require('../models/User');
 
 
 const createUser = (data) => Users.create(data);
@@ -8,16 +8,16 @@ const createUser = (data) => Users.create(data);
 const getAllUsers = () => Users.find({
     is_active: true
 }).populate({
-    path: 'posts',
-    model: 'posts'
+    path: 'tests',
+    model: 'tests'
 });
 
 const getOneUser = (id) => Users.findOne({
     _id: id,
     is_active: true
 }).populate({
-    path: 'posts',
-    model: 'posts'
+    path: 'tests',
+    model: 'tests'
 });
 
 const getUserByEmail = (email) => Users.findOne({

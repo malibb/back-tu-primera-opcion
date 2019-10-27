@@ -1,23 +1,24 @@
-const {
-    Tests
-} = require('../models');
+const { Tests } = require('../models/Test');
+const { getOneUser } = require('./UserService');
 
 
-const createTest = (data) => Tests.create(data);
+const createTest = async (data) => {
+    const test = await Tests.create(data);
+    const populatedTest = await getOneUser(test._id);
+    return populatedTest;
+};
 
-const getAllTests = () => Tests.find({
-    is_active: true
-}).populate({
-    path: 'posts',
-    model: 'posts'
+const getAllTests = () => Tests.find({ is_active: true }).populate({
+    path: 'test',
+    model: 'users'
 });
 
 const getOneTest = (id) => Tests.findOne({
     _id: id,
     is_active: true
 }).populate({
-    path: 'posts',
-    model: 'posts'
+    path: 'test',
+    model: 'users'
 });
 
 const getTestByEmail = (email) => Tests.findOne({
