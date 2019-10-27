@@ -1,0 +1,94 @@
+scalar EmailAddress
+scalar URL
+scalar Upload
+directive @auth on FIELD_DEFINITION | FIELD
+
+type Query {
+    getUsers:[User]!
+    getSingleUser(id:ID!):User!
+    getTests:[Test]!
+    getOneTest(id:ID!):Test!
+    me:User!@auth
+}
+
+type Mutation{
+    createNewUser(data:UserInput!):User!
+    updateOneUser(id:ID!,data:UserUpdateInput!):User!@auth
+    deleteOneUser(id:ID!):String!@auth
+    createNewTest(data:TestInput!):Test!@auth
+    updateOneTest(id:ID!,data:TestUpdateInput!):Test!@auth
+    deleteOneTest(id:ID!):String!@auth
+    login(email:EmailAddress!,password:String):Auth!
+}
+
+type Subscription{
+    test:TestSubscriptionPayload!
+}
+
+type TestSubscriptionPayload{
+    mutation:String!,
+    data:Test!
+}
+
+type Auth{
+    token:String!
+    message:String!
+}
+
+type Test{
+    _id:ID!
+    watson_personalities:String
+    watson_tech:String
+    author:String
+}
+
+input TestInput {
+    watson_personalities:String!
+    content:String!
+    cover:Upload
+}
+
+input TestUpdateInput{
+    watson_personalities:String
+    watson_tech:String
+    author:String
+    is_active:Boolean
+}
+
+type User{
+    _id:ID!
+    first_name:String!
+    last_name:String!
+    email:EmailAddress!
+    birth_date:String!
+    gender:GENDERS
+    profile_pics:[URL]!
+    tests:[Test]!
+}
+
+input UserInput {
+    first_name:String!
+    last_name:String!
+    email:EmailAddress!
+    password:String!
+    birth_date:String
+    gender:GENDERS
+    profile_pics:[String]
+}
+
+input UserUpdateInput {
+    first_name:String
+    last_name:String
+    email:EmailAddress
+    password:String
+    birth_date:String
+    gender:GENDERS
+    profile_pics:[String]
+    is_active:Boolean
+}
+
+enum GENDERS {
+    M
+    F
+    O
+}

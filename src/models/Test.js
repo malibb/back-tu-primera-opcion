@@ -14,6 +14,10 @@ const TestSchema = new Schema({
     watson_tech: {
         type: Object
     },
+    author: {
+        type: Schema.Types.ObjectId,
+        ref: 'users'
+    },
     is_active: {
         type: Boolean,
         default: true
