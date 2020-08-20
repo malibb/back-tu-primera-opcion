@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/malibb/back-tu-primera-opcion#readme",
   "dependencies": {
-    "bcrypt": "^3.0.6",
+    "bcrypt": "^5.0.0",
     "cloudinary": "^1.16.0",
     "dotenv": "^8.2.0",
     "graphql-scalars": "^1.0.4",
